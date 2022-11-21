@@ -2,32 +2,55 @@ import Image from 'next/image'
 import Logo from '../images/Logo.svg'
 import Link from 'next/link'
 import Button from '../components/Button'
+import { Navbar } from 'flowbite-react'
+import { useEffect, useState } from 'react'
 
-export default function
-  () {
+export default function () {
+  const [navbar, setNavbar] = useState(false)
+
+  const changeBackground = () => {
+    console.log(window.scrollY)
+    if (window.scrollY >= 66) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
+    }
+  }
+
+  useEffect(() => {
+    changeBackground()
+    window.addEventListener("scroll", changeBackground)
+  })
+
   return (
-    <div>
-      <nav className='fixed flex top-0 w-full py-8 bg-white z-50 border border-b-2'>
-        <div className='flex w-4/5 mx-auto justify-between'>
-          <div>
-            <Link href='/'>
-              <Image src={Logo} width={65} alt='Foodz Logo'></Image>
-            </Link>
-          </div>
-          <div>
-            <ul className='flex gap-6 text-neutral-4 text-base'>
-              <li><Link href='/'>Beranda</Link></li>
-              <li><Link href='/menu'>Menu</Link></li>
-              <li><Link href=''>Contact</Link></li>
-              <li>
-                <Link href='/'>
-                  <Button title='Login' link=''></Button>
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </div>
+    <Navbar
+      fluid={true}
+      className={navbar
+        ? 'py-6 w-full backdrop-filter backdrop-blur-lg bg-opacity-90 z-50 fixed top-0 border-b border-gray-200'
+        : 'py-6 w-full backdrop-filter backdrop-blur-lg bg-opacity-90 z-50 fixed top-0'}
+    >
+      <div className='flex w-[72rem] mx-auto justify-between'>
+        <Navbar.Brand href="https://flowbite.com/">
+          <Image
+            src={Logo} width={65} alt='Foodz Logo'
+          />
+        </Navbar.Brand>
+        <Navbar.Toggle />
+        <ul className='flex items-center gap-5 text-sm'>
+          <li className='hover:text-hover-primary'>
+            <Link href="/">Beranda</Link>
+          </li>
+          <li className='hover:text-hover-primary'>
+            <Link href="/menu">Menu</Link>
+          </li>
+          <li className='hover:text-hover-primary'>
+            <Link href="/kontak">Kontak</Link>
+          </li>
+          <li>
+            <Button title='Login' link='/'></Button>
+          </li>
+        </ul>
+      </div>
+    </Navbar>
   )
 }
