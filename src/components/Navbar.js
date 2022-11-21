@@ -9,7 +9,6 @@ export default function () {
   const [navbar, setNavbar] = useState(false)
 
   const changeBackground = () => {
-    console.log(window.scrollY)
     if (window.scrollY >= 66) {
       setNavbar(true)
     } else {
@@ -36,7 +35,7 @@ export default function () {
           />
         </Navbar.Brand>
         <Navbar.Toggle />
-        <ul className='flex items-center gap-5 text-sm'>
+        <ul className='flex items-center gap-10 text-sm'>
           <li className='hover:text-hover-primary'>
             <Link href="/">Beranda</Link>
           </li>
@@ -44,10 +43,13 @@ export default function () {
             <Link href="/menu">Menu</Link>
           </li>
           <li className='hover:text-hover-primary'>
-            <Link href="/kontak">Kontak</Link>
+            <Link href="/cart">Keranjang</Link>
+          </li>
+          <li className='hover:text-hover-primary'>
+            <Link href="/profile">Profile</Link>
           </li>
           <li>
-            <Button title='Login' link='/'></Button>
+            <Button title='Login' link='/login'></Button>
           </li>
         </ul>
       </div>
