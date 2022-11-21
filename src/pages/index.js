@@ -40,7 +40,7 @@ export default function Home () {
               <h1 className='font-alice text-5xl text-h1-black'>Anda Punya Pertanyaan.<br />Kami Punya Rasa.</h1>
               <p className='my-6 text-neutral-4 w-3/4'>Jelajahi Selera Anda dengan makanan spesial di tempat spesial. Semua masakan dibuat dengan tangan penuh cinta</p>
               <div className='flex gap-5'>
-                <Button title='BELI SEKARANG' link=''></Button>
+                <Button title='BELI SEKARANG' link='/'></Button>
                 <button>Lihat menu</button>
               </div>
               <div>
@@ -54,11 +54,17 @@ export default function Home () {
                 </div>
               </div>
             </div>
-            <div>
-              <Image src={sugar} className='absolute top-36 right-12' alt='Sugar-Hero' />
-              <Image src={HeroImg} width={470} className='relative top-[38px]' alt='Hero-Image'></Image>
-              <Image src={chopstick} className='absolute top-[443px] right-80' alt='Chopstick-Hero' />
-              <Image src={BgHero} width={650} className='absolute top-28 right-0 -z-50' alt='bg-hero' />
+            <div className='relative bottom-8 left-[26rem]'>
+              <Image src={sugar} className='relative bottom-8 left-[26rem]' alt='Sugar-Hero' />
+            </div>
+            <div >
+              <Image src={HeroImg} alt='Hero-Image'></Image>
+            </div>
+            <div className='absolute top-[26.7rem] right-80'>
+              <Image src={chopstick} alt='Chopstick-Hero' />
+            </div>
+            <div className='absolute top-44 right-0'>
+              <Image src={BgHero} height={500} className='relative -z-50' alt='bg-hero' />
             </div>
           </div>
         </div>
