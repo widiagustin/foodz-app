@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Card from '../components/Card';
 import tokpokki from '../images/Tokpokki.png'
 import Tag from '../components/Tag';
+import { Pagination } from 'flowbite-react';
 
 
 export default function Menu () {
@@ -26,8 +27,8 @@ export default function Menu () {
               link='/menu' />
           </div>
         </div>
-        <div className='h-[120vh] max-w-6xl text-center'>
-          <div className='grid-cols-3 gap-16 mb-20 inline-grid'>
+        <div className='max-w-6xl text-center grid'>
+          <div className='grid-cols-3 gap-16 grid place-content-center mx-auto'>
             <Card
               src={tokpokki}
               title='Korea BBQ'
@@ -71,9 +72,17 @@ export default function Menu () {
             </Card>
           </div>
         </div>
+        <div className='flex justify-center mt-14'>
+          <Pagination
+            currentPage={1}
+            totalPages={100}
+            onPageChange={''}
+            className={'paginate'}
+          />
+        </div>
       </div>
       <div className='w-full'>
-        <div className='mt-[36rem]'>
+        <div className='mt-[40rem]'>
           <Footer />
         </div>
       </div>
