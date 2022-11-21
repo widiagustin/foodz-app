@@ -22,12 +22,17 @@
   }
 
   .swiper-wrapper {
-    padding: 30px !important;
+    padding: 20px !important;
   }
 
   .swiper-button-next::after,
   .swiper-button-prev::after {
     content: "";
+  }
+
+  [aria-current='page'] button {
+    color: #04B90B;
+    background-color: #f1fff1;
   }
 
 }
