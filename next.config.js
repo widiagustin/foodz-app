@@ -15,4 +15,9 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
+module.exports = {
+  nextConfig,
+  images: {
+    domains: ['food-backend-production.up.railway.app'],
+  },
+}
