@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+}
+
+module.exports = {
   async rewrites () {
     return [
       {
@@ -12,10 +16,6 @@ const nextConfig = {
       }
     ]
   },
-  reactStrictMode: true,
-}
-
-module.exports = {
   nextConfig,
   images: {
     domains: ['food-backend-production.up.railway.app'],
