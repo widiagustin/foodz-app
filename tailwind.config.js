@@ -18,6 +18,7 @@ module.exports = {
         'h1-black': '#23262F',
         'primary': '#04B90B',
         'hover-primary': '#00a505',
+        'light-primary': '#eefeef',
       }
     },
   },
