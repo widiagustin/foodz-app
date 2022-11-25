@@ -35,4 +35,9 @@
     background-color: #f1fff1;
   }
 
+  .active {
+    color: #04B90B;
+    font-weight: 600;
+  }
+
 }
