@@ -3,14 +3,19 @@ import Logo from '../images/Logo.svg'
 import Link from 'next/link'
 import Button from '../components/Button'
 import { Navbar } from 'flowbite-react'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { BsCart, BsPerson } from 'react-icons/bs'
 import { IconContext } from 'react-icons'
+import { useDispatch, useSelector } from 'react-redux'
+import { logoutUser } from '../app/api/auth'
+import { userLogout } from '../app/features/Auth/actions'
 
 export default function () {
   const router = useRouter()
   const [navbar, setNavbar] = useState(false)
+  const auth = useSelector(state => state.auth)
+  const dispatch = useDispatch()
 
   const changeBackground = () => {
     if (window.scrollY >= 66) {
@@ -28,10 +33,18 @@ export default function () {
     }
   }
 
+  const handleLogout = () => {
+    logoutUser()
+      .then(_ => dispatch(userLogout()))
+      .then(_ => router.push('/'));
+  }
+
   useEffect(() => {
     changeBackground()
     window.addEventListener("scroll", changeBackground)
-  })
+    // handleLogout()
+  }, [])
+
 
   return (
     <Navbar
@@ -78,17 +91,23 @@ export default function () {
             </Link>
           </li>
           <li className='hover:text-hover-primary'>
-            <Link href="/profile">
-              <a className={isActive('/profile')}>
-                <IconContext.Provider
-                  value={{ size: '18px' }}>
-                  <BsPerson />
-                </IconContext.Provider>
-              </a>
-            </Link>
+            {auth.user
+              ?
+              <Link href="/profile">
+                <a className={isActive('/profile')}>
+                  <IconContext.Provider
+                    value={{ size: '18px' }}>
+                    <BsPerson />
+                  </IconContext.Provider>
+                </a>
+              </Link>
+              : ''
+            }
           </li>
           <li>
-            <Button title='Login' link='/login'></Button>
+            {auth.user
+              ? <Button title='Login' link='/login'></Button>
+              : <Button title='Logout' link='/' onClick={handleLogout}></Button>}
           </li>
         </ul>
       </div>
