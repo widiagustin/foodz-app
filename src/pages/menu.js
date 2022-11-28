@@ -130,7 +130,12 @@ export default function Menu () {
               }) :
                 product.map(item => {
 
-                  // const tag = item.tags.name === undefined ? '' : item.tags.name
+                  const getTag = () => {
+                    if (item.tags) {
+                      return item.tags.name
+                    }
+                    return ''
+                  }
 
                   return (
                     <div key={item._id}>
@@ -139,7 +144,7 @@ export default function Menu () {
                         title={item.name}
                         desc={item.description}
                         price={item.price}
-                        tag={item.name}
+                        tag={item.tags ? item.tags.name : ''}
                         btnLink=''>
                       </Card>
                     </div>
