@@ -14,7 +14,7 @@ import { Navigation } from 'swiper';
 import { useRef, useState } from 'react'
 import HeroImg from '../images/Bibimbap.svg'
 import BgHero from '../images/bg-hero.svg'
-import sugar from '../images/sugar.svg'
+import sugar from '../images/Sugar.svg'
 import chopstick from '../images/chopstick.svg'
 import tokpokki from '../images/Tokpokki.png'
 import chefIll from '../images/chef-ill.svg'
@@ -33,39 +33,36 @@ export default function Home () {
   return (
     <div>
       <div>
-        <Navbar />
-        <div>
-          <div className='max-w-6xl mx-auto h-screen flex justify-center mt-44'>
-            <div className='mt-16'>
-              <h1 className='font-alice text-5xl text-h1-black'>Anda Punya Pertanyaan.<br />Kami Punya Rasa.</h1>
-              <p className='my-6 text-neutral-4 w-3/4'>Jelajahi Selera Anda dengan makanan spesial di tempat spesial. Semua masakan dibuat dengan tangan penuh cinta</p>
-              <div className='flex gap-5'>
-                <Button title='BELI SEKARANG' link='/'></Button>
-                <button>Lihat menu</button>
-              </div>
-              <div>
-                <div className='grid grid-cols-2 text-center mt-24 bg-neutral-7 p-5 w-96 justify-center text-neutral-4 text-sm rounded-2xl divide-x'>
-                  <div>
-                    <p><span className='font-semibold text-2xl'>9+</span><br />Tahun pelayanan.</p>
-                  </div>
-                  <div>
-                    <p><span className='font-semibold text-2xl'>40+</span><br />Cabang di Indonesia.</p>
-                  </div>
+        <div className='max-w-6xl mx-auto h-screen flex justify-center mt-44'>
+          <div className='mt-16'>
+            <h1 className='font-alice text-5xl text-h1-black'>Anda Punya Pertanyaan.<br />Kami Punya Rasa.</h1>
+            <p className='my-6 text-neutral-4 w-3/4'>Jelajahi Selera Anda dengan makanan spesial di tempat spesial. Semua masakan dibuat dengan tangan penuh cinta</p>
+            <div className='flex gap-5'>
+              <Button title='BELI SEKARANG' link='/'></Button>
+              <button>Lihat menu</button>
+            </div>
+            <div>
+              <div className='grid grid-cols-2 text-center mt-24 bg-neutral-7 p-5 w-96 justify-center text-neutral-4 text-sm rounded-2xl divide-x'>
+                <div>
+                  <p><span className='font-semibold text-2xl'>9+</span><br />Tahun pelayanan.</p>
+                </div>
+                <div>
+                  <p><span className='font-semibold text-2xl'>40+</span><br />Cabang di Indonesia.</p>
                 </div>
               </div>
             </div>
-            <div className='relative bottom-8 left-[26rem]'>
-              <Image src={sugar} className='relative bottom-8 left-[26rem]' alt='Sugar-Hero' />
-            </div>
-            <div >
-              <Image src={HeroImg} alt='Hero-Image'></Image>
-            </div>
-            <div className='absolute top-[26.7rem] right-80'>
-              <Image src={chopstick} alt='Chopstick-Hero' />
-            </div>
-            <div className='absolute top-44 right-0'>
-              <Image src={BgHero} height={500} className='relative -z-50' alt='bg-hero' />
-            </div>
+          </div>
+          <div className='relative bottom-8 left-[26rem]'>
+            <Image src={sugar} className='relative bottom-8 left-[26rem]' alt='Sugar-Hero' />
+          </div>
+          <div >
+            <Image src={HeroImg} alt='Hero-Image'></Image>
+          </div>
+          <div className='absolute top-[26.7rem] right-80'>
+            <Image src={chopstick} alt='Chopstick-Hero' />
+          </div>
+          <div className='absolute top-44 right-0'>
+            <Image src={BgHero} height={500} className='relative -z-50' alt='bg-hero' />
           </div>
         </div>
       </div >
