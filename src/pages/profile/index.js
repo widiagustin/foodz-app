@@ -1,29 +1,34 @@
+import Link from 'next/link'
 import Footer from '../../components/Footer'
-import Navbar from '../../components/Navbar'
-import Sidebar from '../../components/Sidebar'
 
 export default function profile () {
+
   return (
     <div>
-      <Navbar />
       <div className='max-w-6xl h-screen mx-auto mt-36'>
         <div className='flex gap-8'>
-          <Sidebar />
-          <div className='border border-gray-300 p-5 rounded-lg w-full'>
-            <h1 className='font-alice text-3xl text-primary'>Profile Kamu</h1>
-            <p className='mt-3 mb-10 text-sm text-neutral-4'>Lengkapi data pribadi diri kamu</p>
-            <div className='space-y-3'>
-              <div className='flex justify-between'>
-                <p className='font-bold'>Nama :</p>
-                <p>WIDHIANI AGUSTIN</p>
-              </div>
-              <div className='flex justify-between'>
-                <p className='font-bold'>Alamat Email :</p>
-                <p>widhianiagsutin14@gmail.com</p>
-              </div>
-            </div>
-
-          </div>
+          <ul className='p-3 rounded-lg flex flex-col gap-5 border border-gray-300 w-52 text-sm'>
+            <li className='border-l-4 border-primary text-primary cursor-pointer'>
+              <Link href='/profile'>
+                <p className='ml-4'>Profile</p>
+              </Link>
+            </li>
+            <li className='cursor-pointer'>
+              <Link href='/profile/order'>
+                <p className='ml-4'>Pemesanan</p>
+              </Link>
+            </li>
+            <li className='cursor-pointer'>
+              <Link href='/profile/address'>
+                <p className='ml-4'>Alamat</p>
+              </Link>
+            </li>
+            <li className='cursor-pointer'>
+              <Link href='/logout'>
+                <p className='ml-4'>Logout</p>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
       <Footer />
