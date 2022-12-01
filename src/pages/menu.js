@@ -57,22 +57,16 @@ export default function Menu () {
     console.log(tag)
   }
 
-  const getProducts = () => {
-    new Promise(res => {
-      setTimeout(() => {
-        res()
-      }, 500)
-    }).then(async () => {
-      await axios.get(`${BaseURL}/products/?page=${page}&limit=${limit}&category=${category}&tags=${nameTag}&q=${inputSearch}`).then(res => {
-        if (category) {
-          setProduct(res.data.data)
-        }
+  const getProducts = async () => {
+    await axios.get(`${BaseURL}/products/?page=${page}&limit=${limit}&category=${category}&tags=${nameTag}&q=${inputSearch}`).then(res => {
+      if (category) {
         setProduct(res.data.data)
-        setIsLoading(false)
-        setPage(res.data.currentPage)
-        setPages(res.data.totalPages)
-        setCount(res.data.count)
-      })
+      }
+      setProduct(res.data.data)
+      setIsLoading(false)
+      setPage(res.data.currentPage)
+      setPages(res.data.totalPages)
+      setCount(res.data.count)
     })
   }
 
