@@ -33,11 +33,6 @@ export default function () {
     }
   }
 
-  const handleLogout = () => {
-    logoutUser()
-      .then(_ => dispatch(userLogout()))
-      .then(_ => router.push('/'));
-  }
 
   useEffect(() => {
     changeBackground()
@@ -45,13 +40,20 @@ export default function () {
     // handleLogout()
   }, [])
 
+  const handleLogout = useCallback(() => {
+    logoutUser()
+      .then(_ => dispatch(userLogout()))
+      .then(_ => router.push('/'));
+  }, [dispatch, router])
+
+  console.log(auth.user)
 
   return (
     <Navbar
       fluid={true}
-      className={navbar
-        ? 'py-6 w-full backdrop-filter backdrop-blur-lg bg-opacity-90 z-50 fixed top-0 border-b border-gray-200'
-        : 'py-6 w-full backdrop-filter backdrop-blur-lg bg-opacity-90 z-50 fixed top-0'}
+      className={`py-6 w-full backdrop-filter backdrop-blur-lg bg-opacity-90 z-50 fixed top-0 
+      ${navbar ? 'border-b border-gray-200' : ''}`
+      }
     >
       <div className='flex w-[72rem] mx-auto justify-between'>
         <Navbar.Brand href="/">
@@ -75,42 +77,47 @@ export default function () {
               </a>
             </Link>
           </li>
-          <li className='hover:text-hover-primary'>
-            <Link href="/cart">
-              <a className={isActive('/cart')}>
-                <div className='flex items-center gap-2'>
-                  <div className='bg-red-600 h-4 w-4 rounded-full relative left-8 top-2'>
-                    <p className='text-xs text-center text-white'>0</p>
-                  </div>
-                  <IconContext.Provider
-                    value={{ size: '15px' }}>
-                    <BsCart />
-                  </IconContext.Provider>
-                </div>
-              </a>
-            </Link>
-          </li>
-          <li className='hover:text-hover-primary'>
-            {auth.user
-              ?
-              <Link href="/profile">
-                <a className={isActive('/profile')}>
-                  <IconContext.Provider
-                    value={{ size: '18px' }}>
-                    <BsPerson />
-                  </IconContext.Provider>
-                </a>
-              </Link>
-              : ''
-            }
-          </li>
+          {!auth.user
+            ? ''
+            :
+            <ul>
+
+              <li className='hover:text-hover-primary'>
+                <Link href="/cart">
+                  <a className={isActive('/cart')}>
+                    <div className='flex items-center gap-2'>
+                      <div className='bg-red-600 h-4 w-4 rounded-full relative left-8 top-2'>
+                        <p className='text-xs text-center text-white'>0</p>
+                      </div>
+                      <IconContext.Provider
+                        value={{ size: '15px' }}>
+                        <BsCart />
+                      </IconContext.Provider>
+                    </div>
+                  </a>
+                </Link>
+              </li>
+              <li className='hover:text-hover-primary'>
+                <Link href="/profile">
+                  <a className={isActive('/profile')}>
+                    <IconContext.Provider
+                      value={{ size: '18px' }}>
+                      <BsPerson />
+                    </IconContext.Provider>
+                  </a>
+                </Link>
+              </li>
+            </ul>
+          }
           <li>
-            {auth.user
-              ? <Button title='Login' link='/login'></Button>
-              : <Button title='Logout' link='/' onClick={handleLogout}></Button>}
+            {!auth.user ?
+              <Button title='Login' link='/login'></Button>
+              :
+              <Button title='Logout' onClick={handleLogout}></Button>
+            }
           </li>
         </ul>
       </div>
-    </Navbar>
+    </Navbar >
   )
 }
