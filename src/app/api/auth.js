@@ -12,7 +12,7 @@ export const loginUser = async (data) => {
 export const logoutUser = async () => {
   let { token } = localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')) : {};
 
-  return await axios.post(`https://food-backend-production.up.railway.app/auth/login`, null, {
+  return await axios.post(`https://food-backend-production.up.railway.app/auth/logout`, null, {
     headers: {
       authorization: `Bearer ${token}`
     }
