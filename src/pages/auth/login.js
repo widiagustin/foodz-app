@@ -7,7 +7,6 @@ import { useDispatch } from 'react-redux'
 import { userLogin } from "../../app/features/Auth/actions";
 import { useRouter } from 'next/router'
 import { useState } from "react";
-import axios from "axios";
 import { Button, TextInput } from "flowbite-react";
 import { loginUser } from "../../app/api/auth";
 
@@ -29,7 +28,7 @@ export default function login () {
       resolver: yupResolver(schema)
     })
   const [status, setStatus] = useState(statusList.idle)
-  const dispatch = useDispatch
+  const dispatch = useDispatch()
   const history = useRouter()
 
   const onSubmit = async (formData) => {
@@ -63,7 +62,6 @@ export default function login () {
               <label className="block mb-2 text-sm font-medium text-gray-900 ">Email kamu</label>
               <TextInput
                 type="email"
-                helperText={errors.email}
                 {...register('email')}
                 // className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5 "
                 placeholder="name@company.com" />
@@ -73,7 +71,6 @@ export default function login () {
               <label className="block mb-2 text-sm font-medium text-gray-900 ">Kata Sandi</label>
               <TextInput type="password"
                 placeholder="••••••••"
-                helperText={errors.password}
                 {...register('password')} />
             </div>
             <div>{errors.password?.message}</div>
